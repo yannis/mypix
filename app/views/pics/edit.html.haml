@@ -1,0 +1,20 @@
+.row
+  .col-xs-12.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+    %h1= @title
+    = form_for [@user, @pic], class: "form" do |f|
+      = render 'layouts/error_messages', target: f.object
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+      .row.form-group
+        .col-sm-6
+          = image_tag(f.object.image_url(:thumb)) if f.object.image?
+        .col-sm-6
+          = f.label :image, "Change the image"
+          = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          = f.hidden_field :image_cache
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: "form-control"
+      .form-group
+        = submit_or_cancel_form f

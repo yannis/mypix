@@ -1,0 +1,22 @@
+.row
+  .col-sm-12.col-md-8
+    = image_tag(@pic.image_url, class: "img-responsive img-thumbnail")
+  .col-sm-12.col-md-4
+    .clearfix
+      %h2.pull-left= @pic.title
+      .btn-group.pull-right
+        - if can? :update, @pic
+          = link_to edit_user_pic_path(@pic.user, @pic), class: "text-primary", data: {toggle: "tooltip", placement: "bottom"}, title: "Edit picture" do
+            %span.glyphicon.glyphicon-edit{aria: {hidden: "true"}}
+        - if can? :destroy, @pic
+          = link_to @pic, method: :delete, confirm: "Are you sure?", class: "text-danger", data: {toggle: "tooltip", placement: "bottom", confirm: "Are you sure?"}, title: "Delete picture" do
+            %span.glyphicon.glyphicon-trash{aria: {hidden: "true"}}
+    %p= @pic.description
+    - if @pic.exifs.present?
+      %h4 EXIF data
+      %ul.list-group
+        - @pic.exifs.each do |k,v|
+          - if v.present? && v.to_i > 0
+            %li.list-group-item
+              = "#{k.to_s.humanize}: #{v}"
+

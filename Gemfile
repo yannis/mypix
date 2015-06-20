@@ -30,7 +30,10 @@ gem "figaro"
 gem "devise"
 gem "cancancan"
 
+gem "rmagick"
 gem 'carrierwave', "0.10.0"
+gem "fog"
+gem "exifr"
 
 
 group :development, :test do
@@ -61,6 +64,7 @@ group :test do
   gem 'email_spec'
   gem "factory_girl_rails"
   gem 'shoulda-matchers', require: false
+  gem 'simplecov', :require => false
 end
 
 group :production do |variable|

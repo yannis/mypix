@@ -9,12 +9,21 @@
   %body
     .container-fluid
       .row
-        .jumbotron
-          %h1 MyPix
-          %p Store your pictures online
-          %p
-            = link_to "Start here", new_user_registration_path, class: "btn btn-lg btn-primary"
-            %small
-              Already have an account?
-              = link_to "Sign in", new_user_session_path
-
+        .col-sm-12
+          = render "layouts/flash"
+          .jumbotron
+            .row
+              .col-sm-6.col-md-4
+                %h1 MyPix
+                %p Store your pictures online
+                %p
+                  = link_to "Start here", new_user_registration_path, class: "btn btn-lg btn-primary"
+                  %small
+                    Already have an account?
+                    = link_to "Sign in", new_user_session_path
+              .col-sm-6.col-md-8
+                - if @pics.present?
+                  .row
+                    - @pics.each do |pic|
+                      .col-sm-4
+                        = image_tag(pic.image_url(:thumb_l), class: "img-responsive img-circle")

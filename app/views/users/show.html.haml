@@ -1,0 +1,34 @@
+#pixModal.modal{tabindex: "-1", role: "dialog", aria: {labelledby: "MyPix Modal", hidden: "true"}}
+  .modal-dialog.modal-lg
+    .modal-content
+.row
+  .col-sm-12
+    %h1
+      = @title
+- if @pics.present?
+  .row
+    - @pics.each do |pic|
+      .col-sm-12.col-md-6.col-lg-4
+        .well
+          .row
+            .col-sm-6
+              .row
+                .col-sm-12
+                  =  link_to image_tag(pic.image_url(:thumb), class: "img-responsive"), pic_path(pic, type: 'modal'), data: {toggle: "modal", target: "#pixModal"}
+            .col-sm-6
+              .btn-group.pull-right
+                = link_to user_pic_path(@user, pic), data: {toggle: "tooltip", placement: "bottom"}, title: "Show details" do
+                  %span.glyphicon.glyphicon-plus-sign{aria: {hidden: "true"}}
+                - if can? :update, pic
+                  = link_to edit_user_pic_path(@user, pic), class: "text-primary", data: {toggle: "tooltip", placement: "bottom"}, title: "Edit picture" do
+                    %span.glyphicon.glyphicon-edit{aria: {hidden: "true"}}
+                - if can? :destroy, pic
+                  = link_to pic, method: :delete, class: "text-danger", data: {toggle: "tooltip", placement: "bottom", confirm: "Are you sure?"}, title: "Delete picture" do
+                    %span.glyphicon.glyphicon-trash{aria: {hidden: "true"}}
+              %h3= pic.title
+              %p
+                = truncate(pic.description, length: 100){ link_to " more", user_pic_path(pic.user, pic)}
+- else
+  .well
+    No pictures yet…
+    = link_to "Upload a picture?", new_user_pic_path(@user)

@@ -1,4 +1,6 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+SimpleCov.start
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -58,4 +60,14 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  def should_be_asked_to_sign_in
+    it {expect(response).to redirect_to("http://test.host/users/sign_in")}
+    it {expect(flash.alert).to eql "Please, sign in!"}
+  end
+
+  def should_not_be_authorized
+    it {expect(response.status).to eq 401}
+    it {expect(flash[:alert]).to match /You are not authorized to access this page/ }
+  end
 end

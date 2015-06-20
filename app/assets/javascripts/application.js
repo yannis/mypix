@@ -12,7 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap
 //= require navigation
+//= require tooltip
+//= require autosize
+//= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+  autosize($('textarea'));
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    $(this).removeData('bs.modal');
+  });
+});
