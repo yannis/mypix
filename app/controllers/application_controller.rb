@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location_if_html
-    store_location if ['text/html', 'application/javascript', 'text/javascript'].include?(request.format) && !['application/json'].include?(request.format)
+    if ['text/html', 'application/javascript', 'text/javascript'].include?(request.format) && !['application/json'].include?(request.format) && params[:type].blank?
+      store_location
+    end
   end
 
   def store_location
