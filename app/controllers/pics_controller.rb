@@ -49,6 +49,7 @@ class PicsController < ApplicationController
 
 private
   def pic_sanitizer
+    Rails.logger.debug "image_cache: #{params[:pic]}"
     params.require(:pic).permit(:title, :description, :image, :user_id)
   end
 end

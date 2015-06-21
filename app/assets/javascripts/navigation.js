@@ -10,4 +10,4 @@ $(document).ready(function() {
     $('.dropdown-toggle').dropdown("toggle");
     $("#registrations").slideToggle();
   });
-})
+});

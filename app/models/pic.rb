@@ -13,6 +13,17 @@ class Pic < ActiveRecord::Base
     file_size: {
       maximum: 4.megabytes.to_i
     }
+protected
+  def jpeg_exifs
+    return {
+      width: EXIFR::JPEG.new(self.image.path).width,
+      height: EXIFR::JPEG.new(self.image.path).height,
+      model: EXIFR::JPEG.new(self.image.path).model,
+      time: EXIFR::JPEG.new(self.image.path).date_time,
+      exposure: EXIFR::JPEG.new(self.image.path).exposure_time.to_s,
+      f_number: EXIFR::JPEG.new(self.image.path).f_number.to_f
+    }
+  end
 
 private
   def set_title
@@ -23,13 +34,8 @@ private
 
   def set_exifs
     exs = {content_type: self.image.content_type}
-    if ["image/jpeg", "image/jpg"].include?(self.image.content_type) && self.image.path
-      exs[:width] = EXIFR::JPEG.new(self.image.path).width
-      exs[:height] = EXIFR::JPEG.new(self.image.path).height
-      exs[:model] = EXIFR::JPEG.new(self.image.path).model
-      exs[:time] = EXIFR::JPEG.new(self.image.path).date_time
-      exs[:exposure] = EXIFR::JPEG.new(self.image.path).exposure_time.to_s
-      exs[:f_number] = EXIFR::JPEG.new(self.image.path).f_number.to_f
+    if ["image/jpeg", "image/jpg"].include?(self.image.content_type) && self.image.path && File.exist?(self.image.path)
+      exs.merge! self.jpeg_exifs
     end
     self.exifs = exs
   end
