@@ -34,7 +34,7 @@ gem "rmagick"
 gem 'carrierwave', "0.10.0"
 gem "fog"
 gem "exifr"
-
+gem "faker"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,7 +59,6 @@ group :developement do
 end
 
 group :test do
-  gem "faker"
   gem 'timecop'
   gem 'email_spec'
   gem "factory_girl_rails"
