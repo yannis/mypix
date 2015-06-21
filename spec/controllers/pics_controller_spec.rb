@@ -89,7 +89,7 @@ RSpec.describe PicsController, type: :controller do
       before {post :create, pic: {title: "new title", image: Rack::Test::UploadedFile.new(File.join(Rails.root.join('db', 'random_images', "picture_#{(1..70).to_a.sample}.jpeg").to_s), "image/jpeg")}}
       it {expect(response).to redirect_to pic_path(assigns(:pic))}
       it {expect(assigns(:pic).title).to eql "new title"}
-      it {expect(flash[:notice]).to eql "Pic created"}
+      it {expect(flash[:notice]).to eql "Pix created"}
     end
 
     describe "create with invalid data" do
@@ -104,7 +104,7 @@ RSpec.describe PicsController, type: :controller do
       it {expect(response).to redirect_to pic_path(pic_1)}
       it {expect(assigns(:pic)).to eql pic_1}
       it {expect(pic_1.reload.title).to eql "new title"}
-      it {expect(flash[:notice]).to eql "Pic updated"}
+      it {expect(flash[:notice]).to eql "Pix updated"}
     end
 
     describe "destroy a valid pic" do
@@ -114,7 +114,7 @@ RSpec.describe PicsController, type: :controller do
       }
       it {expect(response).to redirect_to user_path(user)}
       it {expect(assigns(:pic)).to eql pic_1}
-      it {expect(flash[:notice]).to eql "Picture successfully destroyed"}
+      it {expect(flash[:notice]).to eql "Pix destroyed"}
       it {expect(@pic_count-Pic.count).to eql 1}
     end
 

@@ -15,19 +15,11 @@ RSpec.describe ImageUploader, type: :model do
     @uploader.remove!
   end
 
-  context 'the thumb version' do
-    it {expect(@uploader.thumb).to have_dimensions(200, 200)}
-  end
+  it {expect(@uploader.thumb).to have_dimensions(200, 200)}
 
-  context 'the thumb_xs version' do
-    it {expect(@uploader.thumb_xs).to be_no_larger_than(30, 30)}
-  end
+  it {expect(@uploader.thumb_xs).to be_no_larger_than(30, 30)}
 
-  context 'the thumb_l version' do
-    it {expect(@uploader.thumb_l).to be_no_larger_than(300, 300)}
-  end
+  it {expect(@uploader.thumb_l).to be_no_larger_than(300, 300)}
 
-  # it "should make the image readable only to the owner and not executable" do
-  #   @uploader.should have_permissions(0600)
-  # end
+  it {expect(@uploader.x_small).to have_dimensions(100, 60)}
 end

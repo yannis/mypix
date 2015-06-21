@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# MyPix, a Ruby on Rails app to store your pictures online.
 
-Things you may want to cover:
+Try it here: [mypx.herokuapp.com](http://mypx.herokuapp.com)
 
-* Ruby version
+## Requirements
 
-* System dependencies
+- Ruby 2.2.0
+- Rails 4.2.0
 
-* Configuration
+It uses the following gems:
 
-* Database creation
+- [Figaro](https://github.com/laserlemon/figaro) for environment variables management
+- [Devise](https://github.com/plataformatec/devise) for authentication
+- [Cancancan](https://github.com/CanCanCommunity/cancancan) for authorization
+- [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for file upload
+- [Airbrake](https://yannis.airbrake.io/projects/112721/groups) for exception notification
 
-* Database initialization
+Moreover, MyPix stores its assets and all the user pictures (Pix!) on amazon S3.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It is optimized for mobile browsing (thanks to [Bootstrap](http://getbootstrap.com/)) and should be able to upload your pictures directly from your mobile device.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

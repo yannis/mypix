@@ -16,7 +16,7 @@
           .jumbotron
             .row
               .col-sm-12.col-md-4
-                %h1 MyPix
+                %h1.tk-bd-brick MyPiX
                 %p Store your pictures online
                 %p
                   = link_to "Start here", new_user_registration_path, class: "btn btn-lg btn-primary"
@@ -29,3 +29,4 @@
                     - @pics.each do |pic|
                       .col-sm-4
                         = image_tag(pic.image_url(:thumb_l), class: "img-responsive img-circle")
+    = render 'layouts/javascripts'

@@ -10,7 +10,7 @@ class PicsController < ApplicationController
   end
 
   def new
-    @title = "Upload a picture"
+    @title = "Upload a Pix"
   end
 
   def edit
@@ -19,30 +19,30 @@ class PicsController < ApplicationController
 
   def create
     if @pic.save
-      flash[:notice] = "Pic created"
+      flash[:notice] = "Pix created"
       redirect_back_or_default @pic
     else
-      flash.now[:alert] = "Pic not created"
+      flash.now[:alert] = "Pix not created"
       render :new
     end
   end
 
   def update
     if @pic.update_attributes pic_sanitizer
-      flash[:notice] = "Pic updated"
+      flash[:notice] = "Pix updated"
       redirect_back_or_default @pic
     else
-      flash.now[:alert] = "Pic not updated"
+      flash.now[:alert] = "Pix not updated"
       render :edit
     end
   end
 
   def destroy
     if @pic.destroy
-      flash[:notice] = "Picture successfully destroyed"
+      flash[:notice] = "Pix destroyed"
       redirect_to @pic.user
     else
-      flash[:alert] = "Picture not destroyed"
+      flash[:alert] = "Pix not destroyed"
       render @pic
     end
   end
