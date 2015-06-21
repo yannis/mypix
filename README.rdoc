@@ -4,7 +4,7 @@
 
 Try it here: [mypx.herokuapp.com](http://mypx.herokuapp.com) (hosted on heroku free dyno, so please be patient the app may be sleeping).
 
-Repository is accessible on on (github.com/yannis/mypix)[http://github.com/yannis/mypix]
+Repository is accessible on (github.com/yannis/mypix)[http://github.com/yannis/mypix]
 
 ## Requirements
 
@@ -19,10 +19,10 @@ It uses the following gems:
 - [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for file upload
 - [Airbrake](https://yannis.airbrake.io/projects/112721/groups) for exception notification
 
-Moreover, MyPix stores its assets and all the user pictures (Pix!) on amazon S3.
+MyPix stores its assets and the user pictures (Pix!) on amazon S3.
 
 It is optimized for mobile browsing (thanks to [Bootstrap](http://getbootstrap.com/)) and should be able to upload your pictures directly from your mobile device.
 
 MyPix is supported by tests and the coverage is available [here](), thanks to [SimpleCov](https://github.com/colszowka/simplecov).
 
-
+Send any inquieries to [yannis](mailto:yannisjaquet@mac.com)
