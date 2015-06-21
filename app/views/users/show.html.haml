@@ -13,24 +13,24 @@
           .row
             .col-sm-6
               .row
-                .col-sm-12.pix
+                .col-sm-12.pix-image
                   .hidden-lg.hidden-md
                     =  link_to image_tag(pic.image_url(:medium), class: "img-responsive"), pic_path(pic, type: 'modal'), data: {toggle: "modal", target: "#pixModal"}
                   .visible-lg.visible-md
                     =  link_to image_tag(pic.image_url(:thumb), class: "img-responsive"), pic_path(pic, type: 'modal'), data: {toggle: "modal", target: "#pixModal"}
-            .col-sm-6
-              .btn-group.pull-right
-                = link_to user_pic_path(@user, pic), data: {toggle: "tooltip", placement: "bottom"}, title: "Show details" do
-                  %span.glyphicon.glyphicon-plus-sign{aria: {hidden: "true"}}
-                - if can? :update, pic
-                  = link_to edit_user_pic_path(@user, pic), class: "text-primary", data: {toggle: "tooltip", placement: "bottom"}, title: "Edit Pix" do
-                    %span.glyphicon.glyphicon-edit{aria: {hidden: "true"}}
-                - if can? :destroy, pic
-                  = link_to pic, method: :delete, class: "text-danger", data: {toggle: "tooltip", placement: "bottom", confirm: "Are you sure?"}, title: "Delete Pix" do
-                    %span.glyphicon.glyphicon-trash{aria: {hidden: "true"}}
+            .col-sm-6.pix-description
               %h3= pic.title
               %p
                 = truncate(pic.description, length: 100){ link_to " more", user_pic_path(pic.user, pic)}
+              .btn-group.pull-right
+                = link_to user_pic_path(@user, pic), data: {toggle: "tooltip", placement: "bottom"}, title: "Show details", class: "btn btn-default btn-xs" do
+                  %span.glyphicon.glyphicon-plus-sign{aria: {hidden: "true"}}
+                - if can? :update, pic
+                  = link_to edit_user_pic_path(@user, pic), class: "btn btn-primary btn-xs", data: {toggle: "tooltip", placement: "bottom"}, title: "Edit Pix" do
+                    %span.glyphicon.glyphicon-edit{aria: {hidden: "true"}}
+                - if can? :destroy, pic
+                  = link_to pic, method: :delete, class: "btn btn-danger btn-xs", data: {toggle: "tooltip", placement: "bottom", confirm: "Are you sure?"}, title: "Delete Pix" do
+                    %span.glyphicon.glyphicon-trash{aria: {hidden: "true"}}
 - else
   .well
     No Pix yet…

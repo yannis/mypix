@@ -12,8 +12,8 @@
           - if v.present?
             %li.list-group-item
               = "#{k.to_s.humanize}: #{v}"
-
     .btn-group.pull-right
+      = link_to_back(user_path(current_user), class: 'btn btn-default')
       - if can? :update, @pic
         = link_to edit_user_pic_path(@pic.user, @pic), class: "btn btn-primary", data: {toggle: "tooltip", placement: "bottom"}, title: "Edit Pix" do
           %span.glyphicon.glyphicon-edit{aria: {hidden: "true"}}

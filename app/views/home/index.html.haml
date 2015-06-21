@@ -19,10 +19,10 @@
                 %h1.tk-bd-brick MyPiX
                 %p Store your pictures online
                 %p
-                  = link_to "Start here", new_user_registration_path, class: "btn btn-lg btn-primary"
-                  %small
-                    Already have an account?
-                    = link_to "Sign in", new_user_session_path
+                  = link_to "<span class='glyphicon glyphicon-arrow-right'></span> Start here".html_safe, new_user_registration_path, class: "btn btn-lg btn-primary"
+                %p.text-muted
+                  Already have an account?
+                  = link_to "Sign in", new_user_session_path
               .col-sm-12.col-md-8
                 - if @pics.present?
                   .row.pics
