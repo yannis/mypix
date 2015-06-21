@@ -2,7 +2,9 @@
 
 # MyPix, a Ruby on Rails app to store your pictures online.
 
-Try it here: [mypx.herokuapp.com](http://mypx.herokuapp.com)
+Try it here: [mypx.herokuapp.com](http://mypx.herokuapp.com) (hosted on heroku free dyno, so please be patient the app may be sleeping).
+
+Repository is accessible on on (github.com/yannis/mypix)[http://github.com/yannis/mypix]
 
 ## Requirements
 
