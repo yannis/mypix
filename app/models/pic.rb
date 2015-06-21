@@ -22,10 +22,8 @@ private
   end
 
   def set_exifs
-    exs = {}
-    exs[:content_type] = self.image.content_type
-    Rails.logger.debug "CONTENT: #{["image/jpeg", "image/jpg"].include?(self.image.content_type)}"
-    if ["image/jpeg", "image/jpg"].include?(self.image.content_type)
+    exs = {content_type: self.image.content_type}
+    if ["image/jpeg", "image/jpg"].include?(self.image.content_type) && self.image.path
       exs[:width] = EXIFR::JPEG.new(self.image.path).width
       exs[:height] = EXIFR::JPEG.new(self.image.path).height
       exs[:model] = EXIFR::JPEG.new(self.image.path).model

@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
       config.enable_processing = false
     end
   else
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
     config.storage = :fog
     config.fog_credentials = {
       :provider               => ENV['FOG_PROVIDER'],

@@ -21,4 +21,6 @@ Moreover, MyPix stores its assets and all the user pictures (Pix!) on amazon S3.
 
 It is optimized for mobile browsing (thanks to [Bootstrap](http://getbootstrap.com/)) and should be able to upload your pictures directly from your mobile device.
 
+MyPix is supported by tests and the coverage is available [here](), thanks to [SimpleCov](https://github.com/colszowka/simplecov).
+
 
