@@ -11,7 +11,7 @@ class Pic < ActiveRecord::Base
   validates :image,
     presence: true,
     file_size: {
-      maximum: 2.megabytes.to_i
+      maximum: 4.megabytes.to_i
     }
 
 private
