@@ -10,9 +10,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe "show" do
       before {get :show, id: user_1.to_param}
-      it {expect(response).to be_success}
-      it {expect(response).to render_template 'show'}
-      it {expect(assigns(:user)).to eql user_1}
+      should_be_asked_to_sign_in
     end
   end
 

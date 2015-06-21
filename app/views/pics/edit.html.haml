@@ -11,7 +11,7 @@
           = image_tag(f.object.image_url(:thumb)) if f.object.image?
         .col-sm-6
           = f.label :image, "Change the image"
-          = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control", capture: "camera"
           = f.hidden_field :image_cache
       .form-group
         = f.label :description

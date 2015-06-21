@@ -8,7 +8,7 @@
         = f.text_field :title, class: "form-control"
       .form-group
         = f.label :image, "Select an image"
-        = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+        = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control", capture: "camera"
         = f.hidden_field :image_cache
       .form-group
         = f.label :description

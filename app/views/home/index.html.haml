@@ -2,8 +2,10 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
     %title MyPix
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
@@ -13,7 +15,7 @@
           = render "layouts/flash"
           .jumbotron
             .row
-              .col-sm-6.col-md-4
+              .col-sm-12.col-md-4
                 %h1 MyPix
                 %p Store your pictures online
                 %p
@@ -21,9 +23,9 @@
                   %small
                     Already have an account?
                     = link_to "Sign in", new_user_session_path
-              .col-sm-6.col-md-8
+              .col-sm-12.col-md-8
                 - if @pics.present?
-                  .row
+                  .row.pics
                     - @pics.each do |pic|
                       .col-sm-4
                         = image_tag(pic.image_url(:thumb_l), class: "img-responsive img-circle")

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe PicsController, type: :controller do
 
   let!("user") {create :user, name: "user"}
-
   3.times do |i|
     let!("pic_#{i+1}") {create :pic, user: user}
   end
@@ -108,7 +107,7 @@ RSpec.describe PicsController, type: :controller do
       it {expect(flash[:notice]).to eql "Pic updated"}
     end
 
-    describe "destroy" do
+    describe "destroy a valid pic" do
       before {
         @pic_count = Pic.count
         delete :destroy, id: pic_1.to_param
@@ -117,6 +116,14 @@ RSpec.describe PicsController, type: :controller do
       it {expect(assigns(:pic)).to eql pic_1}
       it {expect(flash[:notice]).to eql "Picture successfully destroyed"}
       it {expect(@pic_count-Pic.count).to eql 1}
+    end
+
+    describe "destroy an invalid pic" do
+      before {
+        @pic_count = Pic.count
+        delete :destroy, id: pic_5.to_param
+      }
+      should_not_be_authorized
     end
   end
 end

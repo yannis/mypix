@@ -16,7 +16,7 @@
       %h4 EXIF data
       %ul.list-group
         - @pic.exifs.each do |k,v|
-          - if v.present? && v.to_i > 0
+          - if v.present?
             %li.list-group-item
               = "#{k.to_s.humanize}: #{v}"
 

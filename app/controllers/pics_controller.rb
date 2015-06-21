@@ -20,7 +20,7 @@ class PicsController < ApplicationController
   def create
     if @pic.save
       flash[:notice] = "Pic created"
-      redirect_back_or_default @pic
+      redirect_to @pic
     else
       flash.now[:alert] = "Pic not created"
       render :new
