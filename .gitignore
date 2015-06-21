@@ -23,7 +23,4 @@ coverage
 *.sublime-workspace
 
 /config/application.yml
-db/seeds.rb
-db/seed_files/*
-
 .env
